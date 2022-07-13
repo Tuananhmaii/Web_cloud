@@ -20,7 +20,6 @@ router.post('/', async function(req, res, next) {
     // console.log(tableString.rows[0].role)
     res.render('user.ejs', 
     {
-      message: 'Login successfully',
       table: tableString
     })
   }else{

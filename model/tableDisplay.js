@@ -20,7 +20,7 @@ async function getTable (user){
     }
     query_data = await pg_connection.query(table_query)
     var dataTable = query_data.rows
-    var stringTable = "<table class='table'><thead><tr>"
+    var stringTable = "<table class='table table-bordered table-sm table-hover'><thead class='thead-dark'><tr>"
     var headerData = Object.keys(dataTable[0])
     for(let headerIndex in headerData){
         var header = "<th scope='col'>" + headerData[headerIndex] + "</th>"
@@ -36,7 +36,7 @@ async function getTable (user){
             var cell = `<td scope='row'> ${rowData[fieldIndex]}</td>`
             bodyTable+=cell
         }
-        bodyTable += `<td scope='row'><a href='/users/delete${get_query}'> Delete </a> </td>`
+        bodyTable += `<td scope='row'><a href='/users/delete${get_query}' class='btn btn-danger'> Delete </a> </td>`
         bodyTable+="</tr>"
         stringTable+=bodyTable
     }
@@ -44,14 +44,13 @@ async function getTable (user){
     for(let headerIndex in headerData){
         stringTable += `<td scope='row'><input type='text' placeholder='${headerData[headerIndex]}' name='${headerData[headerIndex]}'></td>`
     }
-    stringTable += "<td scope='row'> <button type='submit' class='btn btn-success'>Add</button> </td> </form></tr>"
+    stringTable += "<td scope='row'> <button type='submit' class='btn btn-info'>Add</button> </td> </form></tr>"
     stringTable += `<tr> <form action='/users/edit?user=${user}' method='post'>`
     for(let headerIndex in headerData){
         stringTable += `<td scope='row'><input type='text' placeholder='${headerData[headerIndex]}' name='${headerData[headerIndex]}'></td>`
     }
-    stringTable += "<td scope='row'> <button type='submit' class='btn btn-danger'>Edit</button> </td> </form></tr>"
+    stringTable += "<td scope='row'> <button type='submit' class='btn btn-dark'>Edit</button> </td> </form></tr>"
     stringTable+= "</tbody></table>"
-    // console.log(stringTable)
     return stringTable;
 }
 module.exports = getTable
