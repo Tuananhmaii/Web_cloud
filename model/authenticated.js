@@ -1,5 +1,5 @@
 
-const pg_connection = require('./pg-config');
+const pg_connection = require('./Database');
 async function authen (user, pass){
     var authenticated = false;
     const acc_query = {

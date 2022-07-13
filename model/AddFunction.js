@@ -1,4 +1,4 @@
-var pg_conn = require('./pg-config');
+var pg_conn = require('./Database');
 async function AddAction(body)
 {
     console.log(body)

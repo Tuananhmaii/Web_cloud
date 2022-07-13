@@ -1,4 +1,4 @@
-const pg_connection = require('./pg-config');
+const pg_connection = require('./Database');
 async function getTable (user){
     const acc_query = {
         text: 'select role from users where username = $1',
